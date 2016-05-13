@@ -1,0 +1,48 @@
+-- bot access information
+ChannelID = '{yourChannelID}'
+ChannelSecret = '{yourChannelSecret}'
+MID = '{yourMID}'
+
+--see https://developers.line.me/bot-api/api-reference
+body = json.parse(request.body)
+result = body.result[1] 
+reply = result.content.from
+
+--post to your API
+local yourAppliaction = http.request {
+    url = '{yourApplication_url}',
+    method = 'POST',
+    data = json.stringify(result),
+    headers = {
+        ['Content-Type'] = 'application/json; charser=UTF-8'
+    }
+}
+
+yourResponse = json.parse(yourAppliaction.content)
+
+--sending messages for line
+data = {
+    ['to'] = {reply},
+    ['toChannel'] = '1383378250', -- fixed value
+    ['eventType'] = '138311608800106203', -- fixed value
+    ['content'] = {
+        ['contentType'] = 1,
+        ['toType'] = 1,
+        ['text'] = yourResponse.msg
+    }
+}
+
+local response = http.request {
+    url = 'https://trialbot-api.line.me/v1/events', -- line bot server
+    method = 'POST',
+    data = json.stringify(data),
+    headers = {
+        ['Content-Type'] = 'application/json; charser=UTF-8',
+        ['X-Line-ChannelID'] = ChannelID,
+        ['X-Line-ChannelSecret'] = ChannelSecret,
+        ['X-Line-Trusted-User-With-ACL'] = MID
+    }
+}
+
+return true
+-- return response.content -- return response information
