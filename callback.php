@@ -67,12 +67,12 @@ class BetaGoCommand extends LineApplication{
     public function handle($command){
     
         $point_map = [
-            ["¢z","¢w","¢s","¢w","¢s","¢w","¢s","¢w","¢s","¢w","¢{"],
-            ["¢u","¢w","¢q","¢w","¢q","¢w","¢q","¢w","¢q","¢w","¢t"],
-            ["¢u","¢w","¢q","¢w","¢q","¢w","¢q","¢w","¢q","¢w","¢t"],
-            ["¢u","¢w","¢q","¢w","¢q","¢w","¢q","¢w","¢q","¢w","¢t"],
-            ["¢u","¢w","¢q","¢w","¢q","¢w","¢q","¢w","¢q","¢w","¢t"],
-            ["¢|","¢w","¢r","¢w","¢r","¢w","¢r","¢w","¢r","¢w","¢}"]
+            ["â”Œ","â”€","â”¬","â”€","â”¬","â”€","â”¬","â”€","â”¬","â”€","â”"],
+            ["â”œ","â”€","â”¼","â”€","â”¼","â”€","â”¼","â”€","â”¼","â”€","â”¤"],
+            ["â”œ","â”€","â”¼","â”€","â”¼","â”€","â”¼","â”€","â”¼","â”€","â”¤"],
+            ["â”œ","â”€","â”¼","â”€","â”¼","â”€","â”¼","â”€","â”¼","â”€","â”¤"],
+            ["â”œ","â”€","â”¼","â”€","â”¼","â”€","â”¼","â”€","â”¼","â”€","â”¤"],
+            ["â””","â”€","â”´","â”€","â”´","â”€","â”´","â”€","â”´","â”€","â”˜"]
         ];
 
         $x = $command[1];
@@ -92,8 +92,8 @@ class BetaGoCommand extends LineApplication{
         $pc_x = $pc_x[rand(0, count($pc_x)-1)];
         $pc_y = $pc_y[rand(0, count($pc_y)-1)];
         
-        $point_map[$x][$y] = "¡´";
-        $point_map[$pc_x][$pc_y] = "¡³";
+        $point_map[$x][$y] = "â—";
+        $point_map[$pc_x][$pc_y] = "â—‹";
         
         $str = "BetaGo v0.0.0.1\r\n";
         $str .= "your is black, coordinate is (" . $command[1] . ", " . $command[2] . ").\r\n";
@@ -118,14 +118,14 @@ class GoogleCommand extends LineApplication {
 class HelpCommand extends LineApplication {
     public function handle($command) {
         $message = [
-            '¦³¨Æ¶Ü?',
-            '¦³¯f¶Ü?',
-            '·F¹À©Ô',
-            'µL²á³á',
+            'Sesuatu yang salah?',
+            'Sakit itu?',
+            'mengapa menarik',
+            'Oh konyol',
             '....',
-            '§A¨Ó¶Ãªºªü!!',
+            'Ah Anda untuk mess !!',
             'www',
-            '( ¡¦?`)y??~~'
+            '( â€™?`)y??~~'
         ];
         return $message[rand(0, 7)];
     }
